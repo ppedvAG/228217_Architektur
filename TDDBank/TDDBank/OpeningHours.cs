@@ -26,11 +26,19 @@
             }
         }
 
-
+        
         public bool IsWeekend()
         {
             return DateTime.Now.DayOfWeek == DayOfWeek.Sunday ||
                    DateTime.Now.DayOfWeek == DayOfWeek.Saturday;
+        }
+
+        public int GetTimesFromFile()
+        {
+            if (File.ReadAllText("b:\\test.txt").Contains("ente"))
+                return 12;
+            else
+                return 0;
         }
     }
 }

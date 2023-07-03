@@ -46,5 +46,48 @@ namespace TDDBank.Tests
                 Assert.True(oh.IsWeekend());//so
             }
         }
+
+        [Fact]
+        public void GetTimesFromFile_ShouldReturn12_WhenFileContainsEnte()
+        {
+            using (ShimsContext.Create())
+            {
+                // Arrange
+                // Create a shim for File.ReadAllText to return a test value
+                System.IO.Fakes.ShimFile.ReadAllTextString = (path) =>
+                {
+                    return "This is a test file containing ente";
+                };
+
+                var sut = new OpeningHours(); 
+
+                // Act
+                int result = sut.GetTimesFromFile();
+
+                // Assert
+                Assert.Equal(12, result);
+            }
+        }
+
+        [Fact]
+        public void GetTimesFromFile_ShouldReturn0_WhenFileDoesNotContainEnte()
+        {
+            using (ShimsContext.Create())
+            {
+                // Arrange
+                System.IO.Fakes.ShimFile.ReadAllTextString = (path) =>
+                {
+                    return "This  is a test file without 🦆";
+                };
+
+                var sut = new OpeningHours();
+
+                // Act
+                int result = sut.GetTimesFromFile();
+
+                // Assert
+                Assert.Equal(0, result);
+            }
+        }
     }
 }
