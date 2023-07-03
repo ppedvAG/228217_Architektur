@@ -25,5 +25,12 @@
                 return false;
             }
         }
+
+
+        public bool IsWeekend()
+        {
+            return DateTime.Now.DayOfWeek == DayOfWeek.Sunday ||
+                   DateTime.Now.DayOfWeek == DayOfWeek.Saturday;
+        }
     }
 }

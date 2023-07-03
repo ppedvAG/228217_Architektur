@@ -1,4 +1,6 @@
-﻿namespace TDDBank.Tests
+﻿using Microsoft.QualityTools.Testing.Fakes;
+
+namespace TDDBank.Tests
 {
     public class OpeningHoursTest
     {
@@ -18,6 +20,31 @@
             var oh = new OpeningHours();
 
             Assert.Equal(result, oh.IsOpen(dt));
+        }
+
+
+        [Fact]
+        public void OpeningHours_IsWeekend()
+        {
+            var oh = new OpeningHours();
+
+            using (ShimsContext.Create())
+            {
+                System.Fakes.ShimDateTime.NowGet = () => new DateTime(2023, 07, 03);
+                Assert.False(oh.IsWeekend());//mo
+                System.Fakes.ShimDateTime.NowGet = () => new DateTime(2023, 07, 04);
+                Assert.False(oh.IsWeekend());//di
+                System.Fakes.ShimDateTime.NowGet = () => new DateTime(2023, 07, 05);
+                Assert.False(oh.IsWeekend());//mi
+                System.Fakes.ShimDateTime.NowGet = () => new DateTime(2023, 07, 06);
+                Assert.False(oh.IsWeekend());//do
+                System.Fakes.ShimDateTime.NowGet = () => new DateTime(2023, 07, 07);
+                Assert.False(oh.IsWeekend());//fr
+                System.Fakes.ShimDateTime.NowGet = () => new DateTime(2023, 07, 08);
+                Assert.True(oh.IsWeekend());//sa
+                System.Fakes.ShimDateTime.NowGet = () => new DateTime(2023, 07, 09);
+                Assert.True(oh.IsWeekend());//so
+            }
         }
     }
 }
