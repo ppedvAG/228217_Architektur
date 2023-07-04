@@ -15,30 +15,17 @@ namespace BooksAPIClient
             InitializeComponent();
         }
 
-        private async void GoSuche(object sender, RoutedEventArgs e)
+        BooksManager booksManager;
+        private void GoSuche(object sender, RoutedEventArgs e)
         {
-            var url = $"https://www.googleapis.com/books/v1/volumes?q={tb1.Text}";
+            booksManager = new BooksManager(new GoogleApiSource(), tb1.Text);
 
-            var http = new HttpClient();
-            var json = await http.GetStringAsync(url);
-
-            var result = System.Text.Json.JsonSerializer.Deserialize<BooksResult>(json);
-
-            myGrid.ItemsSource = result.items.Select(x => x.volumeInfo).ToList();
-
+            myGrid.ItemsSource = booksManager.GetBooks();
         }
 
-        private async void CalcPageSum(object sender, RoutedEventArgs e)
+        private void CalcPageSum(object sender, RoutedEventArgs e)
         {
-            var url = $"https://www.googleapis.com/books/v1/volumes?q={tb1.Text}";
-
-            var http = new HttpClient();
-            var json = await http.GetStringAsync(url);
-
-            var result = System.Text.Json.JsonSerializer.Deserialize<BooksResult>(json);
-
-
-            MessageBox.Show($"{result.items.Sum(x => x.volumeInfo.pageCount)} pages");
+            MessageBox.Show($"{booksManager.CountPages()} pages");
         }
     }
 }
