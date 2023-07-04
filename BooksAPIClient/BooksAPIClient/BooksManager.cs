@@ -1,8 +1,11 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.CompilerServices;
 
 [assembly: InternalsVisibleTo("BooksAPIClient.Tests")]
+[assembly: InternalsVisibleTo("DynamicProxyGenAssembly2")]
+
 
 namespace BooksAPIClient
 {
@@ -13,6 +16,12 @@ namespace BooksAPIClient
 
         public BooksManager(IDataSource source, string such)
         {
+            if (source == null)
+                throw new ArgumentNullException("source");
+
+            if (string.IsNullOrWhiteSpace(such))
+                throw new ArgumentNullException("such");
+
             this.source = source;
             this.such = such;
         }
