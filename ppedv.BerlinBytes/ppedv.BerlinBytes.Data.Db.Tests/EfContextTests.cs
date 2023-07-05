@@ -1,4 +1,8 @@
+using AutoFixture;
+using AutoFixture.Kernel;
+using FluentAssertions;
 using ppedv.BerlinBytes.Model.DomainModel;
+using System.Reflection;
 
 namespace ppedv.BerlinBytes.Data.Db.Tests
 {
@@ -14,7 +18,7 @@ namespace ppedv.BerlinBytes.Data.Db.Tests
 
             var result = con.Database.EnsureCreated();
 
-            Assert.True(result);
+            result.Should().BeTrue();
         }
 
         [Fact]
@@ -27,7 +31,7 @@ namespace ppedv.BerlinBytes.Data.Db.Tests
             con.Add(comp);
             var result = con.SaveChanges();
 
-            Assert.Equal(1, result);
+            result.Should().Be(1);
         }
 
         [Fact]
@@ -44,7 +48,7 @@ namespace ppedv.BerlinBytes.Data.Db.Tests
             using (var con = new EfContext(conString))
             {
                 var loaded = con.Find<Computer>(comp.Id);
-                Assert.Equal(comp.Name, loaded?.Name);
+                loaded!.Name.Should().Be(comp.Name);
             }
         }
 
@@ -64,14 +68,13 @@ namespace ppedv.BerlinBytes.Data.Db.Tests
             {
                 var loaded = con.Find<Computer>(comp.Id);
                 loaded!.Name = newName;
-                var result = con.SaveChanges();
-                Assert.Equal(1, result);
+                con.SaveChanges().Should().Be(1);
             }
 
             using (var con = new EfContext(conString))
             {
                 var loaded = con.Find<Computer>(comp.Id);
-                Assert.Equal(newName, loaded?.Name);
+                loaded!.Name.Should().Be(newName);
             }
         }
 
@@ -90,15 +93,53 @@ namespace ppedv.BerlinBytes.Data.Db.Tests
             {
                 var loaded = con.Find<Computer>(comp.Id);
                 con.Remove(loaded!);
-                var result = con.SaveChanges();
-                Assert.Equal(1, result);
+                con.SaveChanges().Should().Be(1);
             }
 
             using (var con = new EfContext(conString))
             {
-                var loaded = con.Find<Computer>(comp.Id);
-                Assert.Null(loaded);
+                con.Find<Computer>(comp.Id).Should().BeNull();
             }
+        }
+
+        [Fact]
+        public void Can_insert_App_with_AutoFixture()
+        {
+            var fix = new Fixture();
+            fix.Behaviors.Add(new OmitOnRecursionBehavior());
+            fix.Customizations.Add(new PropertyNameOmitter("Id"));
+            var app = fix.Create<App>();
+            using (var con = new EfContext(conString))
+            {
+                con.Database.EnsureCreated();
+                con.Add(app);
+                con.SaveChanges().Should().BeGreaterThan(3);
+            }
+
+            using (var con = new EfContext(conString))
+            {
+                var loaded = con.Find<App>(app.Id);
+                loaded.Should().BeEquivalentTo(app, x => x.IgnoringCyclicReferences());
+            }
+        }
+    }
+
+    internal class PropertyNameOmitter : ISpecimenBuilder
+    {
+        private readonly IEnumerable<string> names;
+
+        internal PropertyNameOmitter(params string[] names)
+        {
+            this.names = names;
+        }
+
+        public object Create(object request, ISpecimenContext context)
+        {
+            var propInfo = request as PropertyInfo;
+            if (propInfo != null && names.Contains(propInfo.Name))
+                return new OmitSpecimen();
+
+            return new NoSpecimen();
         }
     }
 }
