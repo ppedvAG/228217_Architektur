@@ -8,6 +8,10 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="Autofac" Version="7.0.1" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\ppedv.BerlinBytes.Data.Db\ppedv.BerlinBytes.Data.Db.csproj" />
     <ProjectReference Include="..\ppedv.BerlinBytes.Logic.Core\ppedv.BerlinBytes.Logic.Core.csproj" />
     <ProjectReference Include="..\ppedv.BerlinBytes.Model\ppedv.BerlinBytes.Model.csproj" />
