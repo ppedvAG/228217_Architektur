@@ -1,0 +1,16 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net7.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\ppedv.BerlinBytes.Data.Db\ppedv.BerlinBytes.Data.Db.csproj" />
+    <ProjectReference Include="..\ppedv.BerlinBytes.Logic.Core\ppedv.BerlinBytes.Logic.Core.csproj" />
+    <ProjectReference Include="..\ppedv.BerlinBytes.Model\ppedv.BerlinBytes.Model.csproj" />
+  </ItemGroup>
+
+</Project>

@@ -9,6 +9,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ppedv.BerlinBytes.Data.Db",
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ppedv.BerlinBytes.Data.Db.Tests", "ppedv.BerlinBytes.Data.Db.Tests\ppedv.BerlinBytes.Data.Db.Tests.csproj", "{D5CD4411-90F4-49CF-9A40-47A5B551BCB1}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ppedv.BerlinBytes.Logic.Core", "ppedv.BerlinBytes.Logic.Core\ppedv.BerlinBytes.Logic.Core.csproj", "{0AF30D51-D317-4330-A8EE-5E4B602D7D1C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ppedv.BerlinBytes.UI.DevConsole", "ppedv.BerlinBytes.UI.DevConsole\ppedv.BerlinBytes.UI.DevConsole.csproj", "{D6859358-6B34-4FE6-AD46-2FDC4483E558}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +31,14 @@ Global
 		{D5CD4411-90F4-49CF-9A40-47A5B551BCB1}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D5CD4411-90F4-49CF-9A40-47A5B551BCB1}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D5CD4411-90F4-49CF-9A40-47A5B551BCB1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0AF30D51-D317-4330-A8EE-5E4B602D7D1C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0AF30D51-D317-4330-A8EE-5E4B602D7D1C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0AF30D51-D317-4330-A8EE-5E4B602D7D1C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0AF30D51-D317-4330-A8EE-5E4B602D7D1C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D6859358-6B34-4FE6-AD46-2FDC4483E558}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D6859358-6B34-4FE6-AD46-2FDC4483E558}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D6859358-6B34-4FE6-AD46-2FDC4483E558}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D6859358-6B34-4FE6-AD46-2FDC4483E558}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
