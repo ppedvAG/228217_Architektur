@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ppedv.BerlinBytes.Model", "
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ppedv.BerlinBytes.Data.Db", "ppedv.BerlinBytes.Data.Db\ppedv.BerlinBytes.Data.Db.csproj", "{78593495-ADDF-430D-96A0-4682523941C5}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ppedv.BerlinBytes.Data.Db.Tests", "ppedv.BerlinBytes.Data.Db.Tests\ppedv.BerlinBytes.Data.Db.Tests.csproj", "{D5CD4411-90F4-49CF-9A40-47A5B551BCB1}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{78593495-ADDF-430D-96A0-4682523941C5}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{78593495-ADDF-430D-96A0-4682523941C5}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{78593495-ADDF-430D-96A0-4682523941C5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D5CD4411-90F4-49CF-9A40-47A5B551BCB1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D5CD4411-90F4-49CF-9A40-47A5B551BCB1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D5CD4411-90F4-49CF-9A40-47A5B551BCB1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D5CD4411-90F4-49CF-9A40-47A5B551BCB1}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

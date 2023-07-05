@@ -9,7 +9,7 @@ namespace ppedv.BerlinBytes.Data.Db
         public DbSet<Computer> Computers { get; set; }
         public DbSet<Model.DomainModel.Version> Versions { get; set; }
 
-        private string _conString;
+        private readonly string _conString;
         public EfContext(string conString)
         {
             _conString = conString;
