@@ -1,4 +1,4 @@
-﻿namespace ppedv.BerlinBytes.Model
+﻿namespace ppedv.BerlinBytes.Model.DomainModel
 {
     public abstract class Entity
     {
