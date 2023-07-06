@@ -6,6 +6,9 @@ https://fluentassertions.com/eventmonitoring/
 https://autofixture.github.io
 https://www.electronjs.org/
 
+https://prismlibrary.com/docs/index.html
+https://learn.microsoft.com/en-us/dotnet/communitytoolkit/mvvm/
+
 https://refactoring.guru/design-patterns/catalog
 https://www.connectionstrings.com
 https://fishcodelib.com/index.htm

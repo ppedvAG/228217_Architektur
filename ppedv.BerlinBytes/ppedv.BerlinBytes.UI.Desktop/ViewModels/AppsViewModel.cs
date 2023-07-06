@@ -1,15 +1,15 @@
-﻿using ppedv.BerlinBytes.Model.Contracts;
+﻿using CommunityToolkit.Mvvm.ComponentModel;
+using CommunityToolkit.Mvvm.Input;
+using ppedv.BerlinBytes.Model.Contracts;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Linq;
+using System.Windows.Input;
 
 namespace ppedv.BerlinBytes.UI.Desktop.ViewModels
 {
-    public class AppsViewModel : INotifyPropertyChanged
+    public class AppsViewModel : ObservableObject
     {
         private Model.DomainModel.App selectedApp;
-
-        public event PropertyChangedEventHandler? PropertyChanged;
 
         public List<Model.DomainModel.App> AppList { get; set; }
 
@@ -19,8 +19,8 @@ namespace ppedv.BerlinBytes.UI.Desktop.ViewModels
             set
             {
                 selectedApp = value;
-                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(SelectedApp)));
-                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(VersionCount)));
+                OnPropertyChanged(nameof(SelectedApp));
+                OnPropertyChanged(nameof(VersionCount));
             }
         }
 
@@ -35,6 +35,9 @@ namespace ppedv.BerlinBytes.UI.Desktop.ViewModels
             }
         }
 
+        public ICommand SaveCommand { get; set; }
+        public ICommand NewCommand { get; set; }
+
         //todo kill it!!
         public AppsViewModel() : this(new Data.Db.EfRepository("Server=(localdb)\\mssqllocaldb;Database=BerlinBytes_Test;Trusted_Connection=true;"))
         {
@@ -43,6 +46,8 @@ namespace ppedv.BerlinBytes.UI.Desktop.ViewModels
         public AppsViewModel(IRepository repo)
         {
             AppList = new List<Model.DomainModel.App>(repo.GetAll<Model.DomainModel.App>().ToList());
+
+            SaveCommand = new RelayCommand(() => repo.SaveAll());
         }
 
     }
