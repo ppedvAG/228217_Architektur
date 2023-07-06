@@ -6,9 +6,16 @@
              xmlns:local="clr-namespace:ppedv.BerlinBytes.UI.Desktop.Views"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
-    <Grid>
-        <Viewbox>
-            <TextBlock>💻</TextBlock>
-        </Viewbox>
-    </Grid>
+    <DockPanel>
+        <StackPanel DockPanel.Dock="Top">
+            <TextBox Name="tb1" />
+            <TextBox Text="{Binding ElementName=tb1,Path=Text,UpdateSourceTrigger=PropertyChanged}"
+              Background="{Binding ElementName=tb1,Path=Text}"/>
+        </StackPanel>
+        <Grid>
+            <Viewbox>
+                <TextBlock>💻</TextBlock>
+            </Viewbox>
+        </Grid>
+    </DockPanel>
 </UserControl>

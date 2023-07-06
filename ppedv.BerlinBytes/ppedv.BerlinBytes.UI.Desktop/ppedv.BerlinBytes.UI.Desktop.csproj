@@ -8,7 +8,9 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="ViewModels\" />
+    <ProjectReference Include="..\ppedv.BerlinBytes.Data.Db\ppedv.BerlinBytes.Data.Db.csproj" />
+    <ProjectReference Include="..\ppedv.BerlinBytes.Logic.Core\ppedv.BerlinBytes.Logic.Core.csproj" />
+    <ProjectReference Include="..\ppedv.BerlinBytes.Model\ppedv.BerlinBytes.Model.csproj" />
   </ItemGroup>
 
 </Project>
