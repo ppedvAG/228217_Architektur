@@ -9,6 +9,10 @@ https://www.electronjs.org/
 https://prismlibrary.com/docs/index.html
 https://learn.microsoft.com/en-us/dotnet/communitytoolkit/mvvm/
 
+https://github.com/benruehl/adonis-ui
+https://github.com/ComponentFactory/Krypton
+
+
 https://refactoring.guru/design-patterns/catalog
 https://www.connectionstrings.com
 https://fishcodelib.com/index.htm
