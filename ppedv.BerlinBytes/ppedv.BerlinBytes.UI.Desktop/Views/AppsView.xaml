@@ -10,6 +10,7 @@
     <UserControl.DataContext>
         <viewmodels:AppsViewModel/>
     </UserControl.DataContext>
+
     <DockPanel>
         <WrapPanel DockPanel.Dock="Top">
             <Button>Speichern</Button>
@@ -26,8 +27,8 @@
             <!-- Left Grid for Apps and Versions -->
             <Grid>
                 <DataGrid ItemsSource="{Binding AppList}"
-                          SelectedItem="{Binding SelectedApp}"
-                          AutoGenerateColumns="False">
+                       SelectedItem="{Binding SelectedApp}"
+                       AutoGenerateColumns="False">
                     <DataGrid.Columns>
                         <DataGridTextColumn Header="App Name" Binding="{Binding Name}" Width="*" />
                         <DataGridTextColumn Header="Company" Binding="{Binding Company}" Width="*" />
@@ -74,6 +75,7 @@
 
                 <GroupBox Grid.Row="2" Grid.ColumnSpan="2" Header="Versions">
                     <StackPanel   Margin="0,0,0,5">
+                        <TextBlock Text="{Binding VersionCount}"/>
                         <Button Content="Add Version" />
                         <Button  Content="Delete"/>
                         <ComboBox>
