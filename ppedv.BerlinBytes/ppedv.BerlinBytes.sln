@@ -3,15 +3,17 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.7.33808.371
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ppedv.BerlinBytes.Model", "ppedv.BerlinBytes.Model\ppedv.BerlinBytes.Model.csproj", "{39E2589C-D5B6-4354-8B4C-9B1622531F15}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ppedv.BerlinBytes.Model", "ppedv.BerlinBytes.Model\ppedv.BerlinBytes.Model.csproj", "{39E2589C-D5B6-4354-8B4C-9B1622531F15}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ppedv.BerlinBytes.Data.Db", "ppedv.BerlinBytes.Data.Db\ppedv.BerlinBytes.Data.Db.csproj", "{78593495-ADDF-430D-96A0-4682523941C5}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ppedv.BerlinBytes.Data.Db", "ppedv.BerlinBytes.Data.Db\ppedv.BerlinBytes.Data.Db.csproj", "{78593495-ADDF-430D-96A0-4682523941C5}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ppedv.BerlinBytes.Data.Db.Tests", "ppedv.BerlinBytes.Data.Db.Tests\ppedv.BerlinBytes.Data.Db.Tests.csproj", "{D5CD4411-90F4-49CF-9A40-47A5B551BCB1}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ppedv.BerlinBytes.Data.Db.Tests", "ppedv.BerlinBytes.Data.Db.Tests\ppedv.BerlinBytes.Data.Db.Tests.csproj", "{D5CD4411-90F4-49CF-9A40-47A5B551BCB1}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ppedv.BerlinBytes.Logic.Core", "ppedv.BerlinBytes.Logic.Core\ppedv.BerlinBytes.Logic.Core.csproj", "{0AF30D51-D317-4330-A8EE-5E4B602D7D1C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ppedv.BerlinBytes.Logic.Core", "ppedv.BerlinBytes.Logic.Core\ppedv.BerlinBytes.Logic.Core.csproj", "{0AF30D51-D317-4330-A8EE-5E4B602D7D1C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ppedv.BerlinBytes.UI.DevConsole", "ppedv.BerlinBytes.UI.DevConsole\ppedv.BerlinBytes.UI.DevConsole.csproj", "{D6859358-6B34-4FE6-AD46-2FDC4483E558}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ppedv.BerlinBytes.UI.DevConsole", "ppedv.BerlinBytes.UI.DevConsole\ppedv.BerlinBytes.UI.DevConsole.csproj", "{D6859358-6B34-4FE6-AD46-2FDC4483E558}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ppedv.BerlinBytes.Logic.Core.Tests", "ppedv.BerlinBytes.Logic.Core.Tests\ppedv.BerlinBytes.Logic.Core.Tests.csproj", "{20EBA0F1-C1BC-41BB-AAF5-1C9778111181}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -39,6 +41,10 @@ Global
 		{D6859358-6B34-4FE6-AD46-2FDC4483E558}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D6859358-6B34-4FE6-AD46-2FDC4483E558}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D6859358-6B34-4FE6-AD46-2FDC4483E558}.Release|Any CPU.Build.0 = Release|Any CPU
+		{20EBA0F1-C1BC-41BB-AAF5-1C9778111181}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{20EBA0F1-C1BC-41BB-AAF5-1C9778111181}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{20EBA0F1-C1BC-41BB-AAF5-1C9778111181}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{20EBA0F1-C1BC-41BB-AAF5-1C9778111181}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
