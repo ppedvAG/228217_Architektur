@@ -3,7 +3,7 @@ using ppedv.BerlinBytes.Model.DomainModel;
 
 namespace ppedv.BerlinBytes.Logic.Core
 {
-    public class ComputerService
+    public class ComputerService : IComputerService
     {
         private readonly IRepository repo;
 
