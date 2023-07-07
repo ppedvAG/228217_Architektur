@@ -1,5 +1,8 @@
 https://github.com/public-api-lists/public-api-lists#transportation
 
+https://www.youtube.com/watch?v=_iryZxv8Rxw&pp=ygUNc2VxIGMjIHNlcmlvZw%3D%3D
+https://datalust.co/seq
+
 https://learn.microsoft.com/en-us/dotnet/csharp/fundamentals/coding-style/coding-conventions
 https://fluentassertions.com/eventmonitoring/
 

@@ -19,6 +19,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ppedv.BerlinBytes.UI.Deskto
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ppedv.BerlinBytes.UI.Web", "ppedv.BerlinBytes.UI.Web\ppedv.BerlinBytes.UI.Web.csproj", "{EECFDF41-7F92-4580-AA9C-0E7B045E42F0}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ppedv.BerlinBytes.API", "ppedv.BerlinBytes.API\ppedv.BerlinBytes.API.csproj", "{9AEB646B-0DBE-44CB-893B-BC8740FB43FC}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -57,6 +59,10 @@ Global
 		{EECFDF41-7F92-4580-AA9C-0E7B045E42F0}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{EECFDF41-7F92-4580-AA9C-0E7B045E42F0}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{EECFDF41-7F92-4580-AA9C-0E7B045E42F0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9AEB646B-0DBE-44CB-893B-BC8740FB43FC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9AEB646B-0DBE-44CB-893B-BC8740FB43FC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9AEB646B-0DBE-44CB-893B-BC8740FB43FC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9AEB646B-0DBE-44CB-893B-BC8740FB43FC}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
