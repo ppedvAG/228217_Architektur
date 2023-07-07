@@ -15,7 +15,7 @@ namespace ppedv.BerlinBytes.Logic.Core
         public IEnumerable<Computer> GetComputersWithOutOfSupportAppsInstalled()
         {
             // Get all computers from the repository
-            IEnumerable<Computer> computers = repo.GetAll<Computer>();
+            IEnumerable<Computer> computers = repo.Query<Computer>();
 
             // Filter computers with out-of-support apps installed
             IEnumerable<Computer> computersWithOutOfSupportApps = computers.Where(computer =>

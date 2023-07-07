@@ -15,7 +15,7 @@ namespace ppedv.BerlinBytes.UI.Web.Controllers
         // GET: VersionController
         public ActionResult Index()
         {
-            return View(repo.GetAll<Model.DomainModel.Version>());
+            return View(repo.Query<Model.DomainModel.Version>());
         }
 
         // GET: VersionController/Details/5

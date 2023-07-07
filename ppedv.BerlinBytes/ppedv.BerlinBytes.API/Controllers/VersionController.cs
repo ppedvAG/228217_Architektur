@@ -22,7 +22,7 @@ namespace ppedv.BerlinBytes.API.Controllers
         [HttpGet]
         public IEnumerable<VersionDTO> Get()
         {
-            foreach (var item in repo.GetAll<ppedv.BerlinBytes.Model.DomainModel.Version>())
+            foreach (var item in repo.Query<ppedv.BerlinBytes.Model.DomainModel.Version>())
             {
                 yield return VersionMapper.MapToDTO(item);
             }

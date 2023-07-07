@@ -45,7 +45,7 @@ namespace ppedv.BerlinBytes.UI.Desktop.ViewModels
 
         public AppsViewModel(IRepository repo)
         {
-            AppList = new List<Model.DomainModel.App>(repo.GetAll<Model.DomainModel.App>().ToList());
+            AppList = new List<Model.DomainModel.App>(repo.Query<Model.DomainModel.App>().ToList());
 
             SaveCommand = new RelayCommand(() => repo.SaveAll());
         }

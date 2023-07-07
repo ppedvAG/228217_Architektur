@@ -20,7 +20,7 @@ namespace ppedv.BerlinBytes.Logic.Core.Tests
         public void GetComputersWithOutOfSupportAppsInstalled_1_of_3_is_out_of_support()
         {
             var repoMock = new Mock<IRepository>();
-            repoMock.Setup(x => x.GetAll<Computer>()).Returns(() =>
+            repoMock.Setup(x => x.Query<Computer>()).Returns(() =>
             {
                 var c1 = new Computer() { Name = "c1" };
                 c1.Apps.Add(new App() { Name = "App1" });

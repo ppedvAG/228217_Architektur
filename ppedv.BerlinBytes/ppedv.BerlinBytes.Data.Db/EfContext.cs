@@ -17,7 +17,7 @@ namespace ppedv.BerlinBytes.Data.Db
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlServer(_conString).UseLazyLoadingProxies();
+            optionsBuilder.UseSqlServer(_conString);//.UseLazyLoadingProxies();
         }
     }
 }

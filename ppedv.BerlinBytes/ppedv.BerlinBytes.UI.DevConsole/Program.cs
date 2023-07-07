@@ -27,17 +27,20 @@ IRepository repo = container.Resolve<IRepository>();
 //IRepository repo = new ppedv.BerlinBytes.Data.Db.EfRepository(conString);
 ComputerService cs = new ComputerService(repo);
 
-foreach (var computer in repo.GetAll<Computer>())
+//foreach (var computer in repo.GetComputersIncludeAppsAndVersions())
+foreach (var computer in repo.Query<Computer>().Where(x => x.Name.StartsWith("N")).OrderBy(x => x.OsVersion).ToList())
 {
-    Console.WriteLine($"{computer.Name} {computer.OsVersion}");
+    //Console.WriteLine($"{computer.Name} {computer.OsVersion} AppCount: {computer.Apps.Count}");
+    var apps = repo.Query<App>().Where(x=>x.Computers.Any(c=>c.Id == computer.Id));  //Explizit loading
+    Console.WriteLine($"{computer.Name} {computer.OsVersion} AppCount: {apps.Count()}");
 }
 
-Console.WriteLine("Alle mit unsupported Apps");
+//Console.WriteLine("Alle mit unsupported Apps");
 
-foreach (var computer in cs.GetComputersWithOutOfSupportAppsInstalled())
-{
-    Console.WriteLine($"{computer.Name} {computer.OsVersion}");
-}
+//foreach (var computer in cs.GetComputersWithOutOfSupportAppsInstalled())
+//{
+//    Console.WriteLine($"{computer.Name} {computer.OsVersion}");
+//}
 
 
 Console.WriteLine("Ende");
