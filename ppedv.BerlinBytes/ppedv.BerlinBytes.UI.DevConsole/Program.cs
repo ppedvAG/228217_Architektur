@@ -18,20 +18,20 @@ string conString = "Server=(localdb)\\mssqllocaldb;Database=BerlinBytes_Test;Tru
 
 //Di per AutoFac
 var containerBuilder = new ContainerBuilder();
-containerBuilder.Register<EfRepository>(x => new EfRepository(conString)).AsImplementedInterfaces();
+containerBuilder.Register<EfUnitOfWork>(x => new EfUnitOfWork(conString)).AsImplementedInterfaces();
 var container = containerBuilder.Build();
 
-IRepository repo = container.Resolve<IRepository>();
+IUnitOfWork uow = container.Resolve<IUnitOfWork>();
 
 //'Di' per code und reference
 //IRepository repo = new ppedv.BerlinBytes.Data.Db.EfRepository(conString);
-ComputerService cs = new ComputerService(repo);
+ComputerService cs = new ComputerService(uow);
 
 //foreach (var computer in repo.GetComputersIncludeAppsAndVersions())
-foreach (var computer in repo.Query<Computer>().Where(x => x.Name.StartsWith("N")).OrderBy(x => x.OsVersion).ToList())
+foreach (var computer in uow.ComputerRepo.Query().Where(x => x.Name.StartsWith("N")).OrderBy(x => x.OsVersion).ToList())
 {
     //Console.WriteLine($"{computer.Name} {computer.OsVersion} AppCount: {computer.Apps.Count}");
-    var apps = repo.Query<App>().Where(x=>x.Computers.Any(c=>c.Id == computer.Id));  //Explizit loading
+    var apps = uow.AppRepo.Query().Where(x=>x.Computers.Any(c=>c.Id == computer.Id));  //Explizit loading
     Console.WriteLine($"{computer.Name} {computer.OsVersion} AppCount: {apps.Count()}");
 }
 

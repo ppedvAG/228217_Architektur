@@ -9,7 +9,7 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 string conString = "Server=(localdb)\\mssqllocaldb;Database=BerlinBytes_Test;Trusted_Connection=true;";
-builder.Services.AddScoped<IRepository>(x => new ppedv.BerlinBytes.Data.Db.EfRepository(conString));
+builder.Services.AddScoped<IUnitOfWork>(x => new ppedv.BerlinBytes.Data.Db.EfUnitOfWork(conString));
 
 var app = builder.Build();
 

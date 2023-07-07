@@ -10,8 +10,10 @@ namespace ppedv.BerlinBytes.Logic.Core.Tests
         [Fact]
         public void GetComputersWithOutOfSupportAppsInstalled_no_computers_in_source_should_return_an_empty_list()
         {
-            var repoMock = new Mock<IRepository>();
-            var cs = new ComputerService(repoMock.Object);
+            var repoMock = new Mock<IComputerRepository>();
+            var uowMock = new Mock<IUnitOfWork>();
+            uowMock.Setup(x => x.ComputerRepo).Returns(repoMock.Object);
+            var cs = new ComputerService(uowMock.Object);
 
             cs.GetComputersWithOutOfSupportAppsInstalled().Should().BeEmpty();
         }
@@ -19,8 +21,10 @@ namespace ppedv.BerlinBytes.Logic.Core.Tests
         [Fact]
         public void GetComputersWithOutOfSupportAppsInstalled_1_of_3_is_out_of_support()
         {
-            var repoMock = new Mock<IRepository>();
-            repoMock.Setup(x => x.Query<Computer>()).Returns(() =>
+            var repoMock = new Mock<IComputerRepository>();
+            var uowMock = new Mock<IUnitOfWork>();
+            uowMock.Setup(x => x.ComputerRepo).Returns(repoMock.Object);
+            repoMock.Setup(x => x.Query()).Returns(() =>
             {
                 var c1 = new Computer() { Name = "c1" };
                 c1.Apps.Add(new App() { Name = "App1" });
@@ -46,9 +50,9 @@ namespace ppedv.BerlinBytes.Logic.Core.Tests
                     EndOfSupportDate = DateTime.Now.AddDays(2)
                 });
 
-                return new[] { c1, c2, c3 };
+                return new[] { c1, c2, c3 }.AsQueryable();
             });
-            var cs = new ComputerService(repoMock.Object);
+            var cs = new ComputerService(uowMock.Object);
 
             cs.GetComputersWithOutOfSupportAppsInstalled().Should().ContainSingle(x => x.Name == "c1");
         }

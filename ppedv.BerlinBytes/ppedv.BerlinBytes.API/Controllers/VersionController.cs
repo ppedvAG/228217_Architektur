@@ -11,18 +11,18 @@ namespace ppedv.BerlinBytes.API.Controllers
     [ApiController]
     public class VersionController : ControllerBase
     {
-        private readonly IRepository repo;
+        private readonly IUnitOfWork uow;
 
-        public VersionController(IRepository repo)
+        public VersionController(IUnitOfWork uow)
         {
-            this.repo = repo;
+            this.uow = uow;
         }
 
         // GET: api/<VersionController>
         [HttpGet]
         public IEnumerable<VersionDTO> Get()
         {
-            foreach (var item in repo.Query<ppedv.BerlinBytes.Model.DomainModel.Version>())
+            foreach (var item in uow.VersionRepo.Query())
             {
                 yield return VersionMapper.MapToDTO(item);
             }
@@ -32,15 +32,15 @@ namespace ppedv.BerlinBytes.API.Controllers
         [HttpGet("{id}")]
         public VersionDTO Get(int id)
         {
-            return VersionMapper.MapToDTO(repo.GetById<ppedv.BerlinBytes.Model.DomainModel.Version>(id));
+            return VersionMapper.MapToDTO(uow.VersionRepo.GetById(id));
         }
 
         // POST api/<VersionController>
         [HttpPost]
         public void Post([FromBody] VersionDTO value)
         {
-            repo.Add(VersionMapper.MapToEntity(value));
-            repo.SaveAll();
+            uow.VersionRepo.Add(VersionMapper.MapToEntity(value));
+            uow.SaveAll();
         }
 
         // PUT api/<VersionController>/5

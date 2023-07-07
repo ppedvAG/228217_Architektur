@@ -5,23 +5,23 @@ namespace ppedv.BerlinBytes.UI.Web.Controllers
 {
     public class VersionController : Controller
     {
-        private readonly IRepository repo;
+        private readonly IUnitOfWork uow;
 
-        public VersionController(IRepository repo)
+        public VersionController(IUnitOfWork repo)
         {
-            this.repo = repo;
+            this.uow = repo;
         }
 
         // GET: VersionController
         public ActionResult Index()
         {
-            return View(repo.Query<Model.DomainModel.Version>());
+            return View(uow.VersionRepo.Query());
         }
 
         // GET: VersionController/Details/5
         public ActionResult Details(int id)
         {
-            return View(repo.GetById<Model.DomainModel.Version>(id));
+            return View(uow.VersionRepo.GetById(id));
         }
 
         // GET: VersionController/Create
@@ -37,8 +37,8 @@ namespace ppedv.BerlinBytes.UI.Web.Controllers
         {
             try
             {
-                repo.Add(version);
-                repo.SaveAll();
+                uow.VersionRepo.Add(version);
+                uow.SaveAll();
 
                 return RedirectToAction(nameof(Index));
             }
@@ -51,7 +51,7 @@ namespace ppedv.BerlinBytes.UI.Web.Controllers
         // GET: VersionController/Edit/5
         public ActionResult Edit(int id)
         {
-            return View(repo.GetById<Model.DomainModel.Version>(id));
+            return View(uow.VersionRepo.GetById(id));
         }
 
         // POST: VersionController/Edit/5
@@ -61,8 +61,8 @@ namespace ppedv.BerlinBytes.UI.Web.Controllers
         {
             try
             {
-                repo.Update(version);
-                repo.SaveAll();
+                uow.VersionRepo.Update(version);
+                uow.SaveAll();
                 return RedirectToAction(nameof(Index));
             }
             catch
@@ -74,7 +74,7 @@ namespace ppedv.BerlinBytes.UI.Web.Controllers
         // GET: VersionController/Delete/5
         public ActionResult Delete(int id)
         {
-            return View(repo.GetById<Model.DomainModel.Version>(id));
+            return View(uow.VersionRepo.GetById(id));
         }
 
         // POST: VersionController/Delete/5
@@ -84,8 +84,8 @@ namespace ppedv.BerlinBytes.UI.Web.Controllers
         {
             try
             {
-                repo.Delete(version);   
-                repo.SaveAll();
+                uow.VersionRepo.Delete(version);
+                uow.SaveAll();
                 return RedirectToAction(nameof(Index));
             }
             catch

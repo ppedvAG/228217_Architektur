@@ -6,7 +6,7 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllersWithViews();
 
 string conString = "Server=(localdb)\\mssqllocaldb;Database=BerlinBytes_Test;Trusted_Connection=true;";
-builder.Services.AddScoped<IRepository>(x => new ppedv.BerlinBytes.Data.Db.EfRepository(conString));
+builder.Services.AddScoped<IUnitOfWork>(x => new ppedv.BerlinBytes.Data.Db.EfUnitOfWork(conString));
 
 var app = builder.Build();
 

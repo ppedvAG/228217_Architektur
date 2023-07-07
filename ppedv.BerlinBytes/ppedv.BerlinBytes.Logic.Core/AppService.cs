@@ -5,11 +5,11 @@ namespace ppedv.BerlinBytes.Logic.Core
     public class AppService : IAppService
     {
         IComputerService _computerService;
-        IRepository _repo;
+        IUnitOfWork _unitOfWork;
 
-        public AppService(IRepository repo, IComputerService computerService)
+        public AppService(IUnitOfWork uow, IComputerService computerService)
         {
-            _repo = repo;
+            _unitOfWork = uow;
             _computerService = computerService;
         }
 

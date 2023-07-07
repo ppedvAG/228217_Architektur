@@ -39,13 +39,13 @@ namespace ppedv.BerlinBytes.UI.Desktop.ViewModels
         public ICommand NewCommand { get; set; }
 
         //todo kill it!!
-        public AppsViewModel() : this(new Data.Db.EfRepository("Server=(localdb)\\mssqllocaldb;Database=BerlinBytes_Test;Trusted_Connection=true;"))
+        public AppsViewModel() : this(new Data.Db.EfUnitOfWork("Server=(localdb)\\mssqllocaldb;Database=BerlinBytes_Test;Trusted_Connection=true;"))
         {
         }
 
-        public AppsViewModel(IRepository repo)
+        public AppsViewModel(IUnitOfWork repo)
         {
-            AppList = new List<Model.DomainModel.App>(repo.Query<Model.DomainModel.App>().ToList());
+            AppList = new List<Model.DomainModel.App>(repo.AppRepo.Query().ToList());
 
             SaveCommand = new RelayCommand(() => repo.SaveAll());
         }

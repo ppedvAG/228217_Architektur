@@ -5,17 +5,17 @@ namespace ppedv.BerlinBytes.Logic.Core
 {
     public class ComputerService : IComputerService
     {
-        private readonly IRepository repo;
+        private readonly IUnitOfWork uow;
 
-        public ComputerService(IRepository repo)
+        public ComputerService(IUnitOfWork uo2)
         {
-            this.repo = repo;
+            this.uow = uo2;
         }
 
         public IEnumerable<Computer> GetComputersWithOutOfSupportAppsInstalled()
         {
             // Get all computers from the repository
-            IEnumerable<Computer> computers = repo.Query<Computer>();
+            IEnumerable<Computer> computers = uow.ComputerRepo.Query();
 
             // Filter computers with out-of-support apps installed
             IEnumerable<Computer> computersWithOutOfSupportApps = computers.Where(computer =>

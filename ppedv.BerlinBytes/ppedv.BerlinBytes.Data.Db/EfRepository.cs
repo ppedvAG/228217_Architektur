@@ -4,48 +4,73 @@ using ppedv.BerlinBytes.Model.DomainModel;
 
 namespace ppedv.BerlinBytes.Data.Db
 {
-    public class EfRepository : IRepository
+    public class EfUnitOfWork : IUnitOfWork
     {
         readonly EfContext _context;
 
-        public EfRepository(string conString)
+        public EfUnitOfWork(string conString)
         {
             _context = new EfContext(conString);
         }
 
-        public void Add<T>(T entity) where T : Entity
-        {
-            _context.Add(entity);
-        }
+        public IComputerRepository ComputerRepo => new EfComputerRepository(_context);
 
-        public void Delete<T>(T entity) where T : Entity
-        {
-            _context.Remove(entity);
-        }
+        public IRepository<App> AppRepo => new EfRepository<App>(_context);
 
-        public IQueryable<T> Query<T>() where T : Entity
-        {
-            return _context.Set<T>();
-        }
-
-        public T? GetById<T>(int id) where T : Entity
-        {
-            return _context.Find<T>(id);
-        }
+        public IRepository<Model.DomainModel.Version> VersionRepo => new EfRepository<Model.DomainModel.Version>(_context);
 
         public void SaveAll()
         {
             _context.SaveChanges();
         }
-
-        public void Update<T>(T entity) where T : Entity
-        {
-            _context.Update(entity);
-        }
+    }
+    public class EfComputerRepository : EfRepository<Computer>, IComputerRepository
+    {
+        public EfComputerRepository(EfContext context) : base(context)
+        { }
 
         public IEnumerable<Computer> GetComputersIncludeAppsAndVersions()
         {
             return _context.Set<Computer>().Include(x => x.Apps).ThenInclude(x => x.Versions);
         }
+    }
+
+    public class EfRepository<T> : IRepository<T> where T : Entity
+    {
+
+        protected EfContext _context;
+
+        public EfRepository(EfContext context)
+        {
+            _context = context;
+        }
+
+        public void Add(T entity)
+        {
+            _context.Add(entity);
+        }
+
+        public void Delete(T entity)
+        {
+            _context.Remove(entity);
+        }
+
+        public IQueryable<T> Query()
+        {
+            return _context.Set<T>();
+        }
+
+        public T? GetById(int id)
+        {
+            return _context.Find<T>(id);
+        }
+
+
+        public void Update(T entity)
+        {
+            _context.Update(entity);
+        }
+
+
     }
 }
