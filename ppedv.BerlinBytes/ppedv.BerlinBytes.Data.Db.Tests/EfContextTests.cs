@@ -11,6 +11,7 @@ namespace ppedv.BerlinBytes.Data.Db.Tests
         readonly string conString = "Server=(localdb)\\mssqllocaldb;Database=BerlinBytes_Test;Trusted_Connection=true;";
 
         [Fact]
+        [Trait("","Integration")]
         public void Can_create_db()
         {
             var con = new EfContext(conString);
@@ -22,6 +23,8 @@ namespace ppedv.BerlinBytes.Data.Db.Tests
         }
 
         [Fact]
+        [Trait("", "Integration")]
+
         public void Can_insert_Computer()
         {
             var con = new EfContext(conString);
@@ -35,6 +38,8 @@ namespace ppedv.BerlinBytes.Data.Db.Tests
         }
 
         [Fact]
+        [Trait("", "Integration")]
+
         public void Can_read_Computer()
         {
             var comp = new Computer() { Name = $"Z2_{Guid.NewGuid()}" };
@@ -53,6 +58,8 @@ namespace ppedv.BerlinBytes.Data.Db.Tests
         }
 
         [Fact]
+        [Trait("", "Integration")]
+
         public void Can_update_Computer()
         {
             var comp = new Computer() { Name = $"Z2_{Guid.NewGuid()}" };
@@ -79,6 +86,8 @@ namespace ppedv.BerlinBytes.Data.Db.Tests
         }
 
         [Fact]
+        [Trait("", "Integration")]
+
         public void Can_delete_Computer()
         {
             var comp = new Computer() { Name = $"Z4_{Guid.NewGuid()}" };
@@ -103,6 +112,8 @@ namespace ppedv.BerlinBytes.Data.Db.Tests
         }
 
         [Fact]
+        [Trait("", "Integration")]
+
         public void Can_insert_App_with_AutoFixture()
         {
             var fix = new Fixture();
